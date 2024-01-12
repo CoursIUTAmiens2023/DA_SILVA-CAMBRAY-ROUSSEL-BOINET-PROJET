@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=3 uid="uid://dj2f20s8aoj2g"]
+
+[ext_resource type="Texture2D" uid="uid://dvhukw8x8ar2x" path="res://Dragon/144x128/flying_dragon-gold.png" id="1_4k1fj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l4kvt"]
+size = Vector2(26, 95)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vc3e7"]
+atlas = ExtResource("1_4k1fj")
+region = Rect2(0, 0, 144, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n0oql"]
+atlas = ExtResource("1_4k1fj")
+region = Rect2(144, 0, 144, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_icos0"]
+atlas = ExtResource("1_4k1fj")
+region = Rect2(288, 0, 144, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_260e4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vc3e7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n0oql")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_icos0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2m0rg"]
+size = Vector2(132, 32)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(2, 2.5)
+shape = SubResource("RectangleShape2D_l4kvt")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+sprite_frames = SubResource("SpriteFrames_260e4")
+frame = 2
+frame_progress = 0.157256
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(1, -15)
+shape = SubResource("RectangleShape2D_2m0rg")
