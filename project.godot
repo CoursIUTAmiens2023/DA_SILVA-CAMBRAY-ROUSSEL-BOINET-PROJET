@@ -11,5 +11,10 @@ config_version=5
 [application]
 
 config/name="SpaceInvaderAvecUnPeuPlusDeNous"
+<<<<<<< Updated upstream
 config/features=PackedStringArray("4.1", "Forward Plus")
+=======
+run/main_scene="res://Scenes/TitleMenu/title_menu.tscn"
+config/features=PackedStringArray("4.1", "C#", "Forward Plus")
+>>>>>>> Stashed changes
 config/icon="res://icon.svg"

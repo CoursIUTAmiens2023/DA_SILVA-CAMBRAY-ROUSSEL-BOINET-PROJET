@@ -1,0 +1,136 @@
+[gd_scene load_steps=4 format=3 uid="uid://x0hjxixwlabn"]
+
+[ext_resource type="Texture2D" uid="uid://dgwifma3p2fl8" path="res://Assets/forest.png" id="1_604f5"]
+[ext_resource type="Script" path="res://CanvasLayer.cs" id="2_3gc2k"]
+[ext_resource type="Script" path="res://Scenes/TitleMenu/MainMenu.cs" id="3_5cws2"]
+
+[node name="TitleMenu" type="Node"]
+
+[node name="Background" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_right = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_604f5")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("2_3gc2k")
+
+[node name="MainMenu" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_5cws2")
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/MainMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/MainMenu/CenterContainer"]
+custom_minimum_size = Vector2(512, 256)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/MainMenu/CenterContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MainMenu/CenterContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="Label_GameName" type="Label" parent="CanvasLayer/MainMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Space Invador avec un peu plus de nous
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button_Play" type="Button" parent="CanvasLayer/MainMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Jouer"
+
+[node name="Button_Credits" type="Button" parent="CanvasLayer/MainMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Crédits"
+
+[node name="Button_Quit" type="Button" parent="CanvasLayer/MainMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Quitter"
+
+[node name="CreditsMenu" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/CreditsMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/CreditsMenu/CenterContainer"]
+custom_minimum_size = Vector2(512, 256)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/CreditsMenu/CenterContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/CreditsMenu/CenterContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="Label_Credit" type="Label" parent="CanvasLayer/CreditsMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "CREDITS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label_TexteCredit" type="Label" parent="CanvasLayer/CreditsMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Ce projet a été réalisé dans le cadre de la matière Qualité 
+de développement. 
+Groupe : BUT3 Alternants 
+
+Equipe :
+Boinet Guillaume : 
+Da Silva Suzy :
+Cambray Loïc :
+Roussel Antoine :"
+
+[node name="Button_Back" type="Button" parent="CanvasLayer/CreditsMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Retour"
+
+[connection signal="pressed" from="CanvasLayer/MainMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Button_Play" to="CanvasLayer" method="_on_button_play_pressed"]
+[connection signal="pressed" from="CanvasLayer/MainMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Button_Credits" to="CanvasLayer" method="_on_button_credits_pressed"]
+[connection signal="pressed" from="CanvasLayer/MainMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Button_Quit" to="CanvasLayer" method="_on_button_quit_pressed"]
+[connection signal="pressed" from="CanvasLayer/CreditsMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Button_Back" to="CanvasLayer" method="_on_button_back_pressed"]
