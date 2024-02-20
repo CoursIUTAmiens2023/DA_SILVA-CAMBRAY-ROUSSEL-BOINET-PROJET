@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=3 uid="uid://d07i4wj2wi1yk"]
+
+[ext_resource type="Script" path="res://scripts/Player.cs" id="1_1uau7"]
+[ext_resource type="Texture2D" uid="uid://dkvdavl1v5l71" path="res://Dragon/144x128/flying_dragon-red.png" id="1_6lxi5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j8fj4"]
+atlas = ExtResource("1_6lxi5")
+region = Rect2(0, 0, 144, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_shf7n"]
+atlas = ExtResource("1_6lxi5")
+region = Rect2(144, 0, 144, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lkni3"]
+atlas = ExtResource("1_6lxi5")
+region = Rect2(288, 0, 144, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_aour7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j8fj4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_shf7n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lkni3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ypmgm"]
+size = Vector2(13, 46)
+
+[node name="Area2D" type="Area2D"]
+script = ExtResource("1_1uau7")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_aour7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 3)
+shape = SubResource("RectangleShape2D_ypmgm")
