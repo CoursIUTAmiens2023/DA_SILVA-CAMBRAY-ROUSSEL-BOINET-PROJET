@@ -11,8 +11,10 @@ config_version=5
 [application]
 
 config/name="SpaceInvaderAvecUnPeuPlusDeNous"
-run/main_scene="res://playerTestScene.tscn"
-config/features=PackedStringArray("4.2", "C#", "Forward Plus")
+
+run/main_scene="res://Scenes/TitleMenu/title_menu.tscn"
+config/features=PackedStringArray("4.1", "C#", "Forward Plus")
+
 config/icon="res://icon.svg"
 
 [dotnet]
