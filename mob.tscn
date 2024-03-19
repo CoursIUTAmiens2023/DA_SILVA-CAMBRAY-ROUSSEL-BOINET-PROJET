@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://bhviyb1mk51k6"]
+
+[ext_resource type="Texture2D" uid="uid://c7legkpk2sd5y" path="res://Enemy/minion-45x66.png" id="1_6pb65"]
+[ext_resource type="Script" path="res://scripts/mob.cs" id="1_uf1pr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t7xd2"]
+atlas = ExtResource("1_6pb65")
+region = Rect2(45, 66, 45, 66)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_obg7i"]
+atlas = ExtResource("1_6pb65")
+region = Rect2(90, 66, 45, 66)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uxod2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t7xd2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_obg7i")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l7qk8"]
+size = Vector2(30, 43)
+
+[node name="Mob" type="RigidBody2D"]
+collision_mask = 0
+gravity_scale = 0.0
+script = ExtResource("1_uf1pr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_uxod2")
+frame_progress = 0.682418
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 0.5)
+shape = SubResource("RectangleShape2D_l7qk8")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="OnVisibleOnScreenNotifier2DScreenExited"]
