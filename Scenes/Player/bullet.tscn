@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://bkkiajvvpoxvc"]
+
+[ext_resource type="Texture2D" uid="uid://ddrdieund27gm" path="res://Dragon/flameball.png" id="1_ir03r"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_75q6x"]
+atlas = ExtResource("1_ir03r")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n3em7"]
+atlas = ExtResource("1_ir03r")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ut3d"]
+atlas = ExtResource("1_ir03r")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5qgn1"]
+atlas = ExtResource("1_ir03r")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y5gjd"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_75q6x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n3em7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ut3d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5qgn1")
+}],
+"loop": true,
+"name": &"shot",
+"speed": 5.0
+}]
+
+[node name="Bullet" type="AnimatedSprite2D"]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_y5gjd")
+animation = &"shot"
+frame_progress = 0.314897

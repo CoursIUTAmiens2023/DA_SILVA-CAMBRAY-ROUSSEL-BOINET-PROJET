@@ -1,0 +1,45 @@
+[gd_scene load_steps=8 format=3 uid="uid://1623yj7cvyp5"]
+
+[ext_resource type="Texture2D" uid="uid://bebdea8531gwc" path="res://Enemy/phantom.png" id="1_2erno"]
+[ext_resource type="Script" path="res://Scenes/enemy/phantom/phantom.gd" id="2_n7vci"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0mlgh"]
+atlas = ExtResource("1_2erno")
+region = Rect2(0, 0, 87, 110)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_188vs"]
+atlas = ExtResource("1_2erno")
+region = Rect2(87, 0, 87, 110)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_avk1f"]
+atlas = ExtResource("1_2erno")
+region = Rect2(174, 0, 87, 110)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e0ald"]
+atlas = ExtResource("1_2erno")
+region = Rect2(261, 0, 87, 110)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cqoyo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0mlgh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_188vs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_avk1f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e0ald")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="phantom" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_cqoyo")
+frame_progress = 0.796723
+script = ExtResource("2_n7vci")

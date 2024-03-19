@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://iji6giafsedk"]
+
+[ext_resource type="Texture2D" uid="uid://dgug01vu8fbqh" path="res://Enemy/diable.png" id="1_j4ldm"]
+[ext_resource type="Script" path="res://Scenes/enemy/diable/diable.gd" id="2_l705m"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qksqp"]
+atlas = ExtResource("1_j4ldm")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3cs24"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qksqp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="diable" type="AnimatedSprite2D"]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_3cs24")
+script = ExtResource("2_l705m")
