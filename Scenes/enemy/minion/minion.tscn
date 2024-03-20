@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://c2aixk3d8jqtk"]
+
+[ext_resource type="Script" path="res://Scenes/enemy/minion/minion.gd" id="1_we3dh"]
+[ext_resource type="Texture2D" uid="uid://c7legkpk2sd5y" path="res://Enemy/minion-45x66.png" id="2_q2sax"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oyn6a"]
+atlas = ExtResource("2_q2sax")
+region = Rect2(90, 66, 45, 66)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wjuvi"]
+atlas = ExtResource("2_q2sax")
+region = Rect2(45, 66, 45, 66)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8vbbb"]
+atlas = ExtResource("2_q2sax")
+region = Rect2(0, 66, 45, 66)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6pg22"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oyn6a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wjuvi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8vbbb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="minion" type="AnimatedSprite2D"]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_6pg22")
+frame_progress = 0.130912
+script = ExtResource("1_we3dh")
