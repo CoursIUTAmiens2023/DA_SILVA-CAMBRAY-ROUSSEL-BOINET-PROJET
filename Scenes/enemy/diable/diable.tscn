@@ -1,24 +1,47 @@
-[gd_scene load_steps=5 format=3 uid="uid://iji6giafsedk"]
+[gd_scene load_steps=7 format=3 uid="uid://iji6giafsedk"]
 
 [ext_resource type="Texture2D" uid="uid://dgug01vu8fbqh" path="res://Enemy/diable.png" id="1_j4ldm"]
 [ext_resource type="Script" path="res://Scenes/enemy/diable/diable.gd" id="2_l705m"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qksqp"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_oilxt"]
 atlas = ExtResource("1_j4ldm")
-region = Rect2(128, 0, 64, 64)
+region = Rect2(64, 0, 64, 64)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_3cs24"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_mvoru"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qksqp")
+"texture": SubResource("AtlasTexture_oilxt")
 }],
 "loop": true,
 "name": &"default",
 "speed": 5.0
 }]
 
-[node name="diable" type="AnimatedSprite2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mv4vq"]
+size = Vector2(50, 41)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_psnpw"]
+size = Vector2(52, 43)
+
+[node name="diable" type="CharacterBody2D"]
 texture_filter = 1
-sprite_frames = SubResource("SpriteFrames_3cs24")
 script = ExtResource("2_l705m")
+
+[node name="diableSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_mvoru")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2(0, -10.5)
+shape = SubResource("RectangleShape2D_mv4vq")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+position = Vector2(0, -10.5)
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("RectangleShape2D_psnpw")
+debug_color = Color(0.803922, 0.27451, 0.784314, 0.419608)
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

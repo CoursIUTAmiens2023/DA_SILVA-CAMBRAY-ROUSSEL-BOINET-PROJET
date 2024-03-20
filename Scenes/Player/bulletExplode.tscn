@@ -1,0 +1,80 @@
+[gd_scene load_steps=12 format=3 uid="uid://bss88fvvx1e74"]
+
+[ext_resource type="Texture2D" uid="uid://g5kxfp00xnl2" path="res://Dragon/fireBallExplode.png" id="1_vjgt2"]
+[ext_resource type="Script" path="res://Scenes/Player/bulletExplode.gd" id="2_ta131"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cuvbi"]
+atlas = ExtResource("1_vjgt2")
+region = Rect2(0, 412, 182, 206)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_07c4m"]
+atlas = ExtResource("1_vjgt2")
+region = Rect2(182, 412, 182, 206)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0vks6"]
+atlas = ExtResource("1_vjgt2")
+region = Rect2(364, 412, 182, 206)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o46xd"]
+atlas = ExtResource("1_vjgt2")
+region = Rect2(546, 412, 182, 206)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uvgaq"]
+atlas = ExtResource("1_vjgt2")
+region = Rect2(0, 618, 182, 206)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cq3uj"]
+atlas = ExtResource("1_vjgt2")
+region = Rect2(182, 618, 182, 206)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_id141"]
+atlas = ExtResource("1_vjgt2")
+region = Rect2(364, 618, 182, 206)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wblhw"]
+atlas = ExtResource("1_vjgt2")
+region = Rect2(546, 618, 182, 206)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8tq5e"]
+animations = [{
+"frames": [{
+"duration": 0.2,
+"texture": SubResource("AtlasTexture_cuvbi")
+}, {
+"duration": 0.2,
+"texture": SubResource("AtlasTexture_07c4m")
+}, {
+"duration": 0.2,
+"texture": SubResource("AtlasTexture_0vks6")
+}, {
+"duration": 0.2,
+"texture": SubResource("AtlasTexture_o46xd")
+}, {
+"duration": 0.2,
+"texture": SubResource("AtlasTexture_uvgaq")
+}, {
+"duration": 0.2,
+"texture": SubResource("AtlasTexture_cq3uj")
+}, {
+"duration": 0.2,
+"texture": SubResource("AtlasTexture_id141")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wblhw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="bulletExplode" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_8tq5e")
+frame_progress = 0.367237
+script = ExtResource("2_ta131")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.4
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
