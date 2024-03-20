@@ -3,9 +3,14 @@ using System;
 
 public partial class ScriptEcranJeu : Node2D
 {
+	private DateTime Chrono;
+	private double IntervalPassed; // Used to know when one second has passed
+	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		this.Chrono = new DateTime();		
+		this.IntervalPassed = 0;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -21,5 +26,18 @@ public partial class ScriptEcranJeu : Node2D
 			BG.ScrollBaseOffset = NewVector;
 		}
 		
-	}
+		// Update the chrono and display it on the screen
+		IntervalPassed += delta;
+		
+		var TimePassed = GetNode<Label>("CanvasLayer/Time/TimePassed");
+		
+		if (IntervalPassed >= 1) {
+			IntervalPassed=0;
+			this.Chrono = this.Chrono.AddSeconds(1);
+			if (TimePassed != null ) {
+				TimePassed.Text = this.Chrono.ToString("mm:ss")+ " s";
+			}
+		}
+		// TODO FONCTION PERTE DE VIE + FONCTION GAIN DE POINTS
+	}	
 }
