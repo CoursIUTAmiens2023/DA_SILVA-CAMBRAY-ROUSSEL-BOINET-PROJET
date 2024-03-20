@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://tcklxx5g41oj"]
+[gd_scene load_steps=4 format=3 uid="uid://tcklxx5g41oj"]
 
 [ext_resource type="Texture2D" uid="uid://bhiawmftnwem4" path="res://Assets/map_bg.png" id="1_6khoy"]
 [ext_resource type="Script" path="res://Scenes/EcranJeu/ScriptEcranJeu.cs" id="1_p1j32"]
+[ext_resource type="Texture2D" uid="uid://d11y5kk8f2uro" path="res://Assets/dragon_head.png" id="3_7kg7r"]
 
 [node name="EcranJeu" type="Node2D"]
 rotation = -0.00102403
@@ -17,3 +18,53 @@ motion_mirroring = Vector2(0, 8148.52)
 position = Vector2(575, -3428)
 scale = Vector2(3.4542, 3.4542)
 texture = ExtResource("1_6khoy")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Time" type="GridContainer" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -109.0
+offset_bottom = 40.0
+grow_horizontal = 0
+columns = 2
+
+[node name="LabelTime" type="Label" parent="CanvasLayer/Time"]
+layout_mode = 2
+text = "Time : 
+"
+
+[node name="TimePassed" type="Label" parent="CanvasLayer/Time"]
+layout_mode = 2
+text = "00 : 00s"
+
+[node name="ScoreAndLife" type="GridContainer" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+columns = 4
+
+[node name="LabelScore" type="Label" parent="CanvasLayer/ScoreAndLife"]
+layout_mode = 2
+text = "Score :"
+
+[node name="ScorePlayer" type="Label" parent="CanvasLayer/ScoreAndLife"]
+layout_mode = 2
+text = "00000
+"
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/ScoreAndLife"]
+layout_mode = 2
+columns = 3
+
+[node name="Life1" type="TextureRect" parent="CanvasLayer/ScoreAndLife/GridContainer"]
+layout_mode = 2
+texture = ExtResource("3_7kg7r")
+
+[node name="Life2" type="TextureRect" parent="CanvasLayer/ScoreAndLife/GridContainer"]
+layout_mode = 2
+texture = ExtResource("3_7kg7r")
+
+[node name="Life3" type="TextureRect" parent="CanvasLayer/ScoreAndLife/GridContainer"]
+layout_mode = 2
+texture = ExtResource("3_7kg7r")
