@@ -1,45 +1,126 @@
-[gd_scene load_steps=8 format=3 uid="uid://1623yj7cvyp5"]
+[gd_scene load_steps=18 format=3 uid="uid://1623yj7cvyp5"]
 
 [ext_resource type="Texture2D" uid="uid://bebdea8531gwc" path="res://Enemy/phantom.png" id="1_2erno"]
 [ext_resource type="Script" path="res://Scenes/enemy/phantom/phantom.gd" id="2_n7vci"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0mlgh"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_v754b"]
 atlas = ExtResource("1_2erno")
 region = Rect2(0, 0, 87, 110)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_188vs"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_mvpon"]
 atlas = ExtResource("1_2erno")
 region = Rect2(87, 0, 87, 110)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_avk1f"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_l2vta"]
 atlas = ExtResource("1_2erno")
 region = Rect2(174, 0, 87, 110)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_e0ald"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ti2a"]
 atlas = ExtResource("1_2erno")
 region = Rect2(261, 0, 87, 110)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_cqoyo"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_7gipk"]
+atlas = ExtResource("1_2erno")
+region = Rect2(0, 110, 87, 110)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a1sms"]
+atlas = ExtResource("1_2erno")
+region = Rect2(87, 110, 87, 110)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r8qna"]
+atlas = ExtResource("1_2erno")
+region = Rect2(174, 110, 87, 110)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ya674"]
+atlas = ExtResource("1_2erno")
+region = Rect2(261, 110, 87, 110)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m5y15"]
 animations = [{
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0mlgh")
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_v754b")
 }, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_188vs")
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_mvpon")
 }, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_avk1f")
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_l2vta")
 }, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_e0ald")
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_4ti2a")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_7gipk")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_a1sms")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_r8qna")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_ya674")
 }],
 "loop": true,
 "name": &"default",
 "speed": 5.0
 }]
 
-[node name="phantom" type="AnimatedSprite2D"]
-sprite_frames = SubResource("SpriteFrames_cqoyo")
-frame_progress = 0.796723
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bnkl3"]
+size = Vector2(86, 63)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yraj3"]
+size = Vector2(67, 29)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nkp2j"]
+size = Vector2(23, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_62x6d"]
+size = Vector2(88, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_csqw4"]
+size = Vector2(69, 29)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vgxjk"]
+size = Vector2(25, 20)
+
+[node name="phantom" type="CharacterBody2D"]
 script = ExtResource("2_n7vci")
+
+[node name="phantomSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_m5y15")
+frame_progress = 0.207909
+
+[node name="CollisionUpperBody" type="CollisionShape2D" parent="."]
+position = Vector2(1, -24.5)
+shape = SubResource("RectangleShape2D_bnkl3")
+
+[node name="CollisionMidBody" type="CollisionShape2D" parent="."]
+position = Vector2(-1.5, 21.5)
+shape = SubResource("RectangleShape2D_yraj3")
+
+[node name="CollisionLowerBody" type="CollisionShape2D" parent="."]
+position = Vector2(-1.5, 46)
+shape = SubResource("RectangleShape2D_nkp2j")
+
+[node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionUpperBody" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(1, -25)
+shape = SubResource("RectangleShape2D_62x6d")
+debug_color = Color(0.745098, 0.298039, 0.878431, 0.419608)
+
+[node name="CollisionMidBody" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(-1.5, 21.5)
+shape = SubResource("RectangleShape2D_csqw4")
+debug_color = Color(0.745098, 0.298039, 0.878431, 0.419608)
+
+[node name="CollisionLowerBody" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(-1.5, 46)
+shape = SubResource("RectangleShape2D_vgxjk")
+debug_color = Color(0.745098, 0.298039, 0.878431, 0.419608)
+
+[connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
