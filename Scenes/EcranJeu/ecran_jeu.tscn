@@ -1,41 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://tcklxx5g41oj"]
+[gd_scene load_steps=3 format=3 uid="uid://tcklxx5g41oj"]
 
 [ext_resource type="Texture2D" uid="uid://bhiawmftnwem4" path="res://Assets/map_bg.png" id="1_6khoy"]
 [ext_resource type="Script" path="res://Scenes/EcranJeu/ScriptEcranJeu.cs" id="1_p1j32"]
-
-[sub_resource type="CSharpScript" id="CSharpScript_admd2"]
-script/source = "using Godot;
-using System;
-
-public partial class ScriptBackgroundScrolling : ParallaxBackground
-{
-	public ParallaxBackground Background;
-	
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
-	{
-	}
-
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
-		
-	}
-}
-"
 
 [node name="EcranJeu" type="Node2D"]
 rotation = -0.00102403
 script = ExtResource("1_p1j32")
 
 [node name="Background" type="ParallaxBackground" parent="."]
-script = SubResource("CSharpScript_admd2")
 
 [node name="BackgroundImage" type="ParallaxLayer" parent="Background"]
-motion_scale = Vector2(0, 0)
-motion_mirroring = Vector2(0, 4000)
+motion_scale = Vector2(3, 3)
+motion_mirroring = Vector2(0, 8148.52)
 
 [node name="TextureImage" type="Sprite2D" parent="Background/BackgroundImage"]
-position = Vector2(573, -3431)
+position = Vector2(575, -3428)
 scale = Vector2(3.4542, 3.4542)
 texture = ExtResource("1_6khoy")
