@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://qhca66g05c3r"]
+
+[ext_resource type="Texture2D" uid="uid://ft8i74pvjukk" path="res://Dragon/pngegg.png" id="1_fjqup"]
+[ext_resource type="Script" path="res://Scenes/Player/wave_blast.gd" id="2_rfaf0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hu7vk"]
+atlas = ExtResource("1_fjqup")
+region = Rect2(342, 480, 18, 60)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_amesl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hu7vk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i4kpy"]
+size = Vector2(18, 25)
+
+[node name="wave_blast" type="AnimatedSprite2D"]
+texture_filter = 1
+position = Vector2(1.75439e-07, -4.01357)
+rotation = 1.5708
+scale = Vector2(0.695953, 0.25)
+sprite_frames = SubResource("SpriteFrames_amesl")
+script = ExtResource("2_rfaf0")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(-1.31134e-07, -5.5)
+shape = SubResource("RectangleShape2D_i4kpy")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
+[connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]
