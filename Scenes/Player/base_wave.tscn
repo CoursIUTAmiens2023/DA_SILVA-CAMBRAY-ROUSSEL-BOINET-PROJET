@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://dlkekbenft7xf"]
+
+[ext_resource type="Texture2D" uid="uid://ft8i74pvjukk" path="res://Dragon/pngegg.png" id="1_o7lnc"]
+[ext_resource type="Script" path="res://Scenes/Player/base_wave.gd" id="2_nclk4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rl0tn"]
+atlas = ExtResource("1_o7lnc")
+region = Rect2(255, 465, 85, 93)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xcima"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rl0tn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Base Wave" type="AnimatedSprite2D"]
+texture_filter = 1
+position = Vector2(-2, -21)
+rotation = 1.5708
+scale = Vector2(0.25, 0.25)
+sprite_frames = SubResource("SpriteFrames_xcima")
+flip_h = true
+script = ExtResource("2_nclk4")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

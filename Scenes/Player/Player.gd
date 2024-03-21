@@ -2,11 +2,14 @@ extends CharacterBody2D
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var muzzle : Marker2D = $Muzzle
 
-var bullet = preload("res://Scenes/Player/bullet.tscn")
+var fireball = preload("res://Scenes/Player/bullet.tscn")
+var baseWave = preload("res://Scenes/Player/base_wave.tscn")
+var waveBlast = preload("res://Scenes/Player/wave_blast.tscn")
 
 enum State {Idle, Fly, Shoot}
 var currentState
 var muzzlePosition
+var cooldoonShoot : bool = false
 
 @export var speed = 400
 @export var health = 3
@@ -53,17 +56,21 @@ func playerAnimation():
 		animated_sprite_2d.play("fly")
 		
 func playerShooting(delta):
-	if (Input.is_action_just_pressed("shoot")):
+	if (Input.is_action_just_pressed("shoot") && !cooldoonShoot):
 		currentState = State.Shoot
-		var bulletInstance = bullet.instantiate() as Node2D
-		bulletInstance.global_position = muzzle.global_position
-		get_parent().add_child(bulletInstance)
+		var fireballInstance = fireball.instantiate() as Node2D
+		fireballInstance.global_position = muzzle.global_position
+		get_parent().add_child(fireballInstance)
+		cooldoonShoot = true
 	
 	if (Input.is_action_pressed("rayshoot")):
 		currentState = State.Shoot
-		var bulletInstance = bullet.instantiate() as Node2D
-		bulletInstance.global_position = muzzle.global_position
-		get_parent().add_child(bulletInstance)
+		var baseWaveInstance = baseWave.instantiate() as Node2D
+		baseWaveInstance.global_position = muzzle.global_position
+		get_parent().add_child(baseWaveInstance)
+		var waveBlastInstance = waveBlast.instantiate() as Node2D
+		waveBlastInstance.global_position = muzzle.global_position
+		get_parent().add_child(waveBlastInstance)
 
 func die():
 	if(health <= 0):
@@ -78,3 +85,9 @@ func isPlayer():
 	
 func getHealth() -> int:
 	return health
+
+func getCooldownShoot() -> bool:
+	return cooldoonShoot
+
+func _on_shoot_cooldown_timeout():
+	cooldoonShoot = false
