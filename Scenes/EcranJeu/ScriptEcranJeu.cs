@@ -6,11 +6,23 @@ public partial class ScriptEcranJeu : Node2D
 	private DateTime Chrono;
 	private double IntervalPassed; // Used to know when one second has passed
 	
+	private int RemainingLifes;
+
+	private int Score;
+	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		this.Chrono = new DateTime();		
 		this.IntervalPassed = 0;
+		
+		this.RemainingLifes = 3;
+		
+		this.Score = 0;
+		
+		// Test
+		LostOneLife();
+		GainPoint(5400);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -38,6 +50,30 @@ public partial class ScriptEcranJeu : Node2D
 				TimePassed.Text = this.Chrono.ToString("mm:ss")+ " s";
 			}
 		}
-		// TODO FONCTION PERTE DE VIE + FONCTION GAIN DE POINTS
+		
+		// Update the score 
+		var ScoreDisplayed = GetNode<Label>("CanvasLayer/ScoreAndLife/ScorePlayer");
+		ScoreDisplayed.Text = this.Score.ToString();
+		
 	}	
+	
+	public void LostOneLife() {
+		if (this.RemainingLifes > 0) {
+			// Hide a image of a life 
+			String NameImgLife = "Life" + this.RemainingLifes.ToString();
+			var ImgToHide = GetNode<TextureRect>("CanvasLayer/ScoreAndLife/GridContainer/" + NameImgLife);
+			if (ImgToHide != null) {
+				ImgToHide.Hide();
+			}	
+			// Substract a life
+			this.RemainingLifes-=1;
+		} else {
+			// End the game 
+			// TODO : end the game 
+		}
+	}
+	
+	public void GainPoint(int PointsGained) {
+		this.Score += PointsGained;
+	}
 }
