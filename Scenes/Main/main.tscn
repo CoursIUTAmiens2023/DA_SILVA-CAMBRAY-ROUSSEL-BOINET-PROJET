@@ -1,7 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://x3smkv58ucgt"]
+[gd_scene load_steps=6 format=3 uid="uid://x3smkv58ucgt"]
 
 [ext_resource type="Script" path="res://Scenes/Main/main.gd" id="1_0k8e1"]
 [ext_resource type="PackedScene" uid="uid://bvk1nj2nxpb17" path="res://Scenes/Player/Player.tscn" id="1_5v8h6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aq24h"]
+size = Vector2(1154, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4i5u1"]
+size = Vector2(1154, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m1kmm"]
+size = Vector2(20, 650)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_0k8e1")
@@ -38,6 +47,30 @@ autostart = true
 
 [node name="Player" parent="." instance=ExtResource("1_5v8h6")]
 position = Vector2(512, 576)
+
+[node name="LimiteMap" type="StaticBody2D" parent="."]
+disable_mode = 2
+collision_mask = 0
+
+[node name="CollisionMondeHaut" type="CollisionShape2D" parent="LimiteMap"]
+light_mask = 3
+position = Vector2(575, -9)
+shape = SubResource("RectangleShape2D_aq24h")
+
+[node name="CollisionMondeBas" type="CollisionShape2D" parent="LimiteMap"]
+light_mask = 0
+position = Vector2(575, 656)
+shape = SubResource("RectangleShape2D_4i5u1")
+
+[node name="CollisionMondeGauche" type="CollisionShape2D" parent="LimiteMap"]
+light_mask = 3
+position = Vector2(-8, 323)
+shape = SubResource("RectangleShape2D_m1kmm")
+
+[node name="CollisionMondeDroit" type="CollisionShape2D" parent="LimiteMap"]
+light_mask = 3
+position = Vector2(1163, 321)
+shape = SubResource("RectangleShape2D_m1kmm")
 
 [connection signal="child_exiting_tree" from="." to="." method="_on_child_exiting_tree"]
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
