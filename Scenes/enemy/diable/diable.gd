@@ -1,6 +1,7 @@
 extends CharacterBody2D
 @onready var diable_sprite = $diableSprite
 
+var death = preload("res://Scenes/enemy/death.tscn")
 
 @export var health = 25
 var speed = 200
@@ -31,4 +32,7 @@ func _on_hurtbox_area_entered(area):
 
 func die():
 	if(health <= 0):
+		var deathInstance = death.instantiate() as Node2D
+		deathInstance.global_position = global_position
+		get_parent().add_child(deathInstance)
 		queue_free()

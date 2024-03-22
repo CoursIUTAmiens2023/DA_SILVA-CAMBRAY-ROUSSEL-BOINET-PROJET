@@ -1,6 +1,7 @@
 extends CharacterBody2D
 @onready var phantom_sprite = $phantomSprite
 
+var death = preload("res://Scenes/enemy/death.tscn")
 
 @export var health = 100
 var speed = 50
@@ -29,4 +30,7 @@ func _on_hurt_box_area_entered(area):
 
 func die():
 	if(health <= 0):
+		var deathInstance = death.instantiate() as Node2D
+		deathInstance.global_position = global_position
+		get_parent().add_child(deathInstance)
 		queue_free()
