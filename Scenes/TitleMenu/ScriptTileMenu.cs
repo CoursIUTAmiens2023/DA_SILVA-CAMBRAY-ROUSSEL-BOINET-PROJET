@@ -9,7 +9,7 @@ public partial class ScriptTileMenu : Godot.CanvasLayer
 	{
 		// Change to the game scene
 		// TODO ADD PATH GAME SCENE
-		String GameScenePath = "";
+		String GameScenePath = "res://Scenes/EcranJeu/ecran_jeu.tscn";
 		GetTree().ChangeSceneToFile(GameScenePath);
 	}
 	
