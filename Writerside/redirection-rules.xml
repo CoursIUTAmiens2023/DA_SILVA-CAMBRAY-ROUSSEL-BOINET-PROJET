@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE rules SYSTEM "https://resources.jetbrains.com/writerside/1.0/redirection-rules.dtd">
+<rules>
+    <!-- format is as follows
+    <rule id="<unique id>">
+        <accepts>page.html</accepts>
+    </rule>
+    -->
+    <rule id="2a7f5d8c">
+        <description>Created after removal of "Doc Utilisateur" from Help Instance</description>
+        <accepts>Doc-Utilisateur.html</accepts>
+    </rule>
+    <rule id="61af88c3">
+        <description>Created after removal of "Doc Technique" from Help Instance</description>
+        <accepts>Doc-Technique.html</accepts>
+    </rule>
+    <rule id="391728a4">
+        <description>Created after removal of "How to" from Help Instance</description>
+        <accepts>How-to.html</accepts>
+    </rule>
+    <rule id="6deec1a4">
+        <description>Created after removal of "Tutorial" from Help Instance</description>
+        <accepts>Tutorial.html</accepts>
+    </rule>
+    <rule id="39ec0fbf">
+        <description>Created after removal of "This is the first topic" from Help Instance</description>
+        <accepts>Default-topic.html</accepts>
+    </rule>
+    <rule id="1536bcb9">
+        <description>Created after removal of "Technique" from Help Instance</description>
+        <accepts>Technique.html</accepts>
+    </rule>
+    <rule id="4456c3aa">
+        <description>Created after removal of "Partie Technique" from Help Instance</description>
+        <accepts>Partie-Technique.html</accepts>
+    </rule>
+</rules>
