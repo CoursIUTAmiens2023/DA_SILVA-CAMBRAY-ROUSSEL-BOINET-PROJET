@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://dlcev6xyr5x58"]
+
+[ext_resource type="Script" path="res://Scenes/GameOverMenu/game_over.gd" id="1_bi42y"]
+[ext_resource type="Texture2D" uid="uid://bcoqcn1tsjh0g" path="res://Assets/gameOver.png" id="2_vm153"]
+
+[node name="GameOver" type="Node2D"]
+script = ExtResource("1_bi42y")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+offset_left = -264.0
+offset_top = -64.0
+offset_right = 1336.0
+offset_bottom = 836.0
+texture = ExtResource("2_vm153")
+
+[node name="Replay" type="Button" parent="."]
+offset_left = 760.0
+offset_top = 568.0
+offset_right = 888.0
+offset_bottom = 632.0
+text = "Replay"
+
+[node name="Return" type="Button" parent="."]
+offset_left = 896.0
+offset_top = 568.0
+offset_right = 1024.0
+offset_bottom = 632.0
+text = "Return"
+
+[connection signal="pressed" from="Replay" to="." method="_on_replay_pressed"]
+[connection signal="pressed" from="Return" to="." method="_on_return_pressed"]

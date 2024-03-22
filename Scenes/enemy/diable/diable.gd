@@ -5,21 +5,17 @@ var death = preload("res://Scenes/enemy/death.tscn")
 
 @export var health = 25
 var speed = 200
-var score = 5
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	global_position.y += speed * delta
 	diable_sprite.play("default")
-	die()
+	dieDiable()
 	
-
-
-
 func _on_hurtbox_area_entered(area):
 	if(area.get_parent().has_method("getDamageAmount")):
 		var node = area.get_parent() as Node
@@ -30,7 +26,7 @@ func _on_hurtbox_area_entered(area):
 	if(area.get_parent().has_method("isPlayer")):
 		queue_free()
 
-func die():
+func dieDiable():
 	if(health <= 0):
 		var deathInstance = death.instantiate() as Node2D
 		deathInstance.global_position = global_position

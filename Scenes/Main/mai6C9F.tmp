@@ -6,6 +6,9 @@
 [node name="Main" type="Node2D"]
 script = ExtResource("1_0k8e1")
 
+[node name="Player" parent="." instance=ExtResource("1_5v8h6")]
+position = Vector2(512, 320)
+
 [node name="SpawnPosition" type="Node2D" parent="."]
 position = Vector2(512, 0)
 
@@ -36,8 +39,4 @@ position = Vector2(960, 0)
 [node name="SpawnTimer" type="Timer" parent="."]
 autostart = true
 
-[node name="Player" parent="." instance=ExtResource("1_5v8h6")]
-position = Vector2(512, 576)
-
-[connection signal="child_exiting_tree" from="." to="." method="_on_child_exiting_tree"]
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

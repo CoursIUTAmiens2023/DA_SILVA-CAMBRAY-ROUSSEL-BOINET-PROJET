@@ -20,9 +20,6 @@ public partial class ScriptEcranJeu : Node2D
 		
 		this.Score = 0;
 		
-		// Test
-		LostOneLife();
-		GainPoint(5400);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -50,12 +47,12 @@ public partial class ScriptEcranJeu : Node2D
 				TimePassed.Text = this.Chrono.ToString("mm:ss")+ " s";
 			}
 		}
+
+        // Update the score 
+        var ScoreDisplayed = GetNode<Label>("./CanvasLayer/ScoreAndLife/ScorePlayer");
+        ScoreDisplayed.Text = this.Score.ToString();
 		
-		// Update the score 
-		var ScoreDisplayed = GetNode<Label>("CanvasLayer/ScoreAndLife/ScorePlayer");
-		ScoreDisplayed.Text = this.Score.ToString();
-		
-	}	
+    }	
 	
 	public void LostOneLife() {
 		if (this.RemainingLifes > 0) {
@@ -75,5 +72,10 @@ public partial class ScriptEcranJeu : Node2D
 	
 	public void GainPoint(int PointsGained) {
 		this.Score += PointsGained;
+    }
+
+	public String getScore()
+	{
+		return this.Score.ToString();
 	}
 }
