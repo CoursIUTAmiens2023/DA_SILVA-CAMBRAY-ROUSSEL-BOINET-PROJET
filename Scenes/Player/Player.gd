@@ -2,6 +2,7 @@ extends CharacterBody2D
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var muzzle : Marker2D = $Muzzle
 
+
 var fireball = preload("res://Scenes/Player/bullet.tscn")
 var baseWave = preload("res://Scenes/Player/base_wave.tscn")
 var waveBlast = preload("res://Scenes/Player/wave_blast.tscn")
@@ -22,7 +23,7 @@ func _physics_process(delta):
 	playerFly(delta)
 	playerAnimation()
 	playerShooting(delta)
-	die()
+	diePlayer()
 	
 	
 func playerFly(delta):
@@ -72,7 +73,7 @@ func playerShooting(delta):
 		waveBlastInstance.global_position = muzzle.global_position
 		get_parent().add_child(waveBlastInstance)
 
-func die():
+func diePlayer():
 	if(health <= 0):
 		queue_free()
 

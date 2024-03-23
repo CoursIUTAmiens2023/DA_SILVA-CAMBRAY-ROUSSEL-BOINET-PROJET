@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://tcklxx5g41oj"]
+[gd_scene load_steps=5 format=3 uid="uid://tcklxx5g41oj"]
 
 [ext_resource type="Texture2D" uid="uid://bhiawmftnwem4" path="res://Assets/map_bg.png" id="1_6khoy"]
 [ext_resource type="Script" path="res://Scenes/EcranJeu/ScriptEcranJeu.cs" id="1_p1j32"]
 [ext_resource type="Texture2D" uid="uid://d11y5kk8f2uro" path="res://Assets/dragon_head.png" id="3_7kg7r"]
+[ext_resource type="PackedScene" uid="uid://x3smkv58ucgt" path="res://Scenes/Main/main.tscn" id="4_w56wa"]
 
 [node name="EcranJeu" type="Node2D"]
 rotation = -0.00102403
@@ -68,3 +69,5 @@ texture = ExtResource("3_7kg7r")
 [node name="Life3" type="TextureRect" parent="CanvasLayer/ScoreAndLife/GridContainer"]
 layout_mode = 2
 texture = ExtResource("3_7kg7r")
+
+[node name="Main" parent="." instance=ExtResource("4_w56wa")]

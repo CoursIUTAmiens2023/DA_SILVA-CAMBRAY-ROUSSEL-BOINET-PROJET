@@ -14,7 +14,6 @@ config/name="SpaceInvaderAvecUnPeuPlusDeNous"
 run/main_scene="res://Scenes/TitleMenu/title_menu.tscn"
 config/features=PackedStringArray("4.1", "C#", "Forward Plus")
 config/icon="res://icon.svg"
-<<<<<<<Updatedupstreamconfig/features=PackedStringArray("4.1", "Forward Plus")
 
 [dotnet]
 
@@ -55,5 +54,6 @@ rayshoot={
 
 [layer_names]
 
+2d_physics/layer_1="MONDE"
 2d_physics/layer_2="PLAYER"
 2d_physics/layer_3="ENEMY"

@@ -20,12 +20,10 @@ func _on_timer_timeout():
 
 
 func _on_hitbox_area_entered(area):
-	print("Bullet area entered")
 	bulletIsExplode()
 
 
 func _on_hitbox_body_entered(body):
-	print("Bullet body entered")
 	bulletIsExplode()
 
 func bulletIsExplode():
